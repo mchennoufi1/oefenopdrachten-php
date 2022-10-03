@@ -13,7 +13,6 @@ if(isset($_POST['verzenden'])){
         $movie = $_POST['movie'];
         switch($movie){
                 case "1": $_SESSION['movie'] = "Spider-Man: No Way Home"; break;
-                case "2": $_SESSION['movie'] = "Doctor Strange in the Multiverse of Madness "; break;
                 case "3": $_SESSION['movie'] = "Avatar"; break;
                 case "4": $_SESSION['movie'] = "Don't look up "; break;
                 case "5": $_SESSION['movie'] = "Jumanji: The Next Level"; break;
@@ -56,7 +55,6 @@ if(isset($_POST['verzenden'])){
     <br>
     <label>Wat is je film keuze: </label> <br>
     <input type='radio' name='movie' value='1'> Spider-Man: No Way Home <br>
-    <input type='radio' name='movie' value='2'> Doctor Strange in the Multiverse of Madness <br>
     <input type='radio' name='movie' value='3'> Avatar <br>
     <input type='radio' name='movie' value='4'> Don't look up <br>
     <input type='radio' name='movie' value='5'> Jumanji: The Next Level <br>

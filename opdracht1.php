@@ -17,7 +17,7 @@ if(isset($_POST['verzenden'])){
             $melding = "Vul een getal in.";
         }
         else{
-            $melding =  "Hallo $fname $lname. Je leeftijd is $age. Je geslaccht is $geslacht.";
+            $melding =  "Hallo $fname $lname. Je leeftijd is $age. Je geslacht is $geslacht.";
 
         }
     }
@@ -50,7 +50,6 @@ if(isset($_POST['verzenden'])){
     <label>Geslacht: </label> <br>
     <input type='radio' name='geslacht' value='m'>Man <br>
     <input type='radio' name='geslacht' value='v'>Vrouw <br>
-    <input type='radio' name='geslacht' value='a'>Anders <br>
 
 
     <input type='submit' name='verzenden' value='Verzenden'>
