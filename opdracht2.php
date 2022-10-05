@@ -1,29 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="oefenen">
+    <form class="tweedeForm" method="post" action="">
+        <label>Gebruikersnaam:
+            <input type="text" name="username">
+        </label><br>
+        <label>Wachtwoord:
+            <input type="text" name="password">
+        </label><br>
+        <input type="submit" name="verzenden" value="Verzenden">
+        <br>
+    </form>
+</div>
+
+
 
 <?php
-$melding = "";
-
 if(isset($_POST['verzenden'])){
-    //empty($_POST['password']) || empty($_POST['username']))
-    if($_POST['password']==NULL || $_POST['username']==NULL) {
-        $melding = "Vul alle velden in!";
-    }else {
+    if($_POST['username'] == NULL || $_POST['password'] == NULL ){
+        echo "Er is niet alles ingevuld";
+    }else{
+        $username = $_POST['username'];
+        $password = $_POST['password'];
         $username = filter_input(INPUT_POST, 'username', FILTER_VALIDATE_EMAIL);
-
         if(!$username){
-            $melding = "Vul een email als gebruikersnaam in!";
-        }
-        else{
-            $password = $_POST['password'];
-            if ($username === "test@gmail.com" && $password === "1234"){
+            echo "Vul een email in";
+        }else {
+            if ($username == "example@gmail.com" || $password == "pass") {
                 header("Location: admin.php");
-            }
-            else {
-                $melding = "Uw gebruikersnaam en/of wachtwoord is niet bekend bij ons.";
+            } else {
+                echo "Verkeerde email of wachtwoord ingevoerd";
             }
         }
     }
 }
 ?>
+
+
 
 <h1>De opdracht</h1>
 <p>Wanneer je op de inlog knop drukt:
@@ -60,6 +77,5 @@ if(isset($_POST['verzenden'])){
 
 
 
-<?php
-echo $melding;
-?>
+</body>
+</html>

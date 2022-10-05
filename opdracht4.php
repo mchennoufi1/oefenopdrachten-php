@@ -1,37 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="oefenen">
+    <form class="derdeForm" method="post" action="">
+        <label>Getal 1:
+            <input type="text" name="getal1">
+        </label><br>
+        <label>Getal 2:
+            <input type="text" name="getal2">
+        </label><br><br>
+        <label>Wat wil je:<br>
+            <input type="radio" name="reken" value="1">+<br>
+            <input type="radio" name="reken" value="2">-<br>
+            <input type="radio" name="reken" value="3">*<br>
+            <input type="radio" name="reken" value="4">/<br>
+        </label><br>
+        <input type="submit" name="verzenden" value="Verzenden">
+        <br>
+    </form>
+</div>
+
+
+
+
 
 <?php
-$melding = "";
-
 if(isset($_POST['verzenden'])){
-    //empty($_POST['number1']) || empty($_POST['number2']) || empty($_POST['reken']))
-    if($_POST['number1']==NULL || $_POST['number2']==NULL || $_POST['reken']==NULL) {
-        $melding = "Vul alle velden in!";
-    }else {
-        $number1 = filter_input(INPUT_POST, 'number1', FILTER_VALIDATE_FLOAT);
-        $number2 = filter_input(INPUT_POST, 'number2', FILTER_VALIDATE_FLOAT);
+    if($_POST['getal1'] == NULL || $_POST['getal2'] == NULL || $_POST['reken'] == NULL ){
+        echo "Er is niet alles ingevuld";
+    }else{
 
-        if(!$number1 || !$number2){
-            $melding = "Vul een getal in!";
-        }
-        else{
+        $getal1 = $_POST['getal1'];
+        $getal1 = filter_input(INPUT_POST, 'getal1', FILTER_VALIDATE_INT);
+        $getal2 = $_POST['getal2'];
+        $getal2 = filter_input(INPUT_POST, 'getal2', FILTER_VALIDATE_INT);
+        if(!$getal1 || !$getal2) {
+            echo "Vul een getal in";
+            }else{
             $reken = $_POST['reken'];
-            switch($reken){
-                case "op": $number = $number1 + $number2;
-                    $melding = "$number1 + $number2 = $number"; break;
-                case "af": $number = $number1 - $number2;
-                    $melding = "$number1 - $number2 = $number"; break;
-                case "keer": $number = $number1 * $number2;
-                    $melding = "$number1 * $number2 = $number"; break;
-                case "delen": $number = $number1 / $number2;
-                    $number = number_format($number, 2);
-                    $melding = "$number1 / $number2 = $number"; break;
-                default: $melding = "Er is niks ingevuld."; break;
-
+            switch ($reken) {
+                case "1":
+                    $uitkomst = $getal1 + $getal2;
+                    echo $uitkomst;
+                    break;
+                case "2":
+                    $uitkomst = $getal1 - $getal2;
+                    echo $uitkomst;
+                    break;
+                case "3":
+                    $uitkomst = $getal1 * $getal2;
+                    echo $uitkomst;
+                    break;
+                case "4":
+                    $uitkomst = $getal1 / $getal2;
+                    $uitkomst = number_format($uitkomst, 2);
+                    echo $uitkomst;
+                    break;
+                default:
+                    echo "Er is geen mogelijkheid ingevuld";
+                    break;
+            }
             }
         }
-    }
 }
 ?>
+
+
+
 
 <h1>Rekenmachine</h1>
 <p>Maak een rekenmachine die de uitkomst laat zien. </p>
@@ -78,6 +116,5 @@ if(isset($_POST['verzenden'])){
 
 
 
-<?php
-echo $melding;
-?>
+</body>
+</html>

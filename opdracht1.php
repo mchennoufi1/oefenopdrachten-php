@@ -1,3 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="oefenen">
+    <form class="eersteForm" method="post" action="">
+        <label>Voornaam:
+            <input type="text" name="fname">
+        </label><br>
+        <label>Achternaam:
+            <input type="text" name="lname">
+        </label><br>
+        <label>Leeftijd:
+            <input type="text" name="age">
+        </label><br>
+        <label>Geslacht:<br>
+            <input type="radio" name="geslacht" value="male">Man<br>
+            <input type="radio" name="geslacht" value="female">Vrouw<br>
+        </label><br>
+            <input type="submit" name="verzenden" value="Verzenden">
+        <br>
+    </form>
+</div>
+
+
+<?php
+    if(isset($_POST['verzenden'])){
+        if($_POST['fname'] == NULL || $_POST['lname'] == NULL || $_POST['age'] == NULL || $_POST['geslacht'] == NULL){
+            echo "Er is niet alles ingevuld";
+        }else{
+            $fname = $_POST['fname'];
+            $lname = $_POST['lname'];
+            $age = $_POST['age'];
+            $gender = $_POST['geslacht'];
+            $age = filter_input(INPUT_POST, 'age', FILTER_VALIDATE_INT);
+            if(!$age){
+                echo "Vul iets in";
+            }else{
+                echo "Welkom $fname $lname, uw leeftijd is $age en uw geslacht is $gender";
+            }
+        }
+    }
+?>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <?php
 $melding = "";
@@ -60,3 +117,5 @@ if(isset($_POST['verzenden'])){
 <?php
     echo $melding;
 ?>
+</body>
+</html>

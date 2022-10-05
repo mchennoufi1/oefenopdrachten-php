@@ -1,29 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="oefenen">
+    <form class="derdeForm" method="post" action="">
+        <label>Naam:
+            <input type="text" name="name">
+        </label><br><br>
+        <label>Wat is je film keuze:<br>
+            <input type="radio" name="movie" value="1">Spiderman<br>
+            <input type="radio" name="movie" value="2">Avatar<br>
+            <input type="radio" name="movie" value="3">No exit<br>
+            <input type="radio" name="movie" value="4">Prisoners<br>
+        </label><br>
+        <input type="submit" name="verzenden" value="Verzenden">
+        <br>
+    </form>
+</div>
+
+
+
+
 
 <?php
-$melding = "";
-
 if(isset($_POST['verzenden'])){
-    //empty($_POST['name']) || empty($_POST['movie']))
-    if($_POST['name']==NULL || $_POST['movie']==NULL){
-        $melding = "Vul alle velden in!";
-    }else {
+    if($_POST['name'] == NULL || $_POST['movie'] == NULL ){
+        echo "Er is niet alles ingevuld";
+    }else{
         session_start();
         $name = $_POST['name'];
         $_SESSION['name'] = $name;
         $movie = $_POST['movie'];
-        switch($movie){
-                case "1": $_SESSION['movie'] = "Spider-Man: No Way Home"; break;
-                case "3": $_SESSION['movie'] = "Avatar"; break;
-                case "4": $_SESSION['movie'] = "Don't look up "; break;
-                case "5": $_SESSION['movie'] = "Jumanji: The Next Level"; break;
-                default: $melding = "Er is niks ingevuld."; break;
-
+        switch ($movie){
+            case "1": $_SESSION['movie'] = "Spiderman"; break;
+            case "2": $_SESSION['movie'] = "Avatar"; break;
+            case "3": $_SESSION['movie'] = "No exit"; break;
+            case "4": $_SESSION['movie'] = "Prisoners"; break;
+            default: echo "Er is geen mogelijkheid ingevuld"; break;
         }
-        header("Location: movie.php");
+        header('Location: movie.php');
     }
-
 }
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <h1>Kiezen</h1>
 <p>Maak een keuze uit een lijst van films. </p>
@@ -67,6 +102,5 @@ if(isset($_POST['verzenden'])){
 
 
 
-<?php
-echo $melding;
-?>
+</body>
+</html>

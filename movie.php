@@ -11,8 +11,8 @@
 <h1> Keuze </h1>
 <p>
         <?php
-            session_start();
-            echo "Beste " . $_SESSION['name']. ", uw keuze voor de film is geworden: ". $_SESSION['movie'];
+        session_start();
+        echo "Beste: " . $_SESSION['name'] . ", Uw keuze is: " . $_SESSION['movie'];
         ?>
 </p>
 </body>
